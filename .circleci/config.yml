@@ -9,3 +9,6 @@ jobs: # a collection of steps
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
+    steps:
+      - checkout
+      - run: sudo composer self-update
