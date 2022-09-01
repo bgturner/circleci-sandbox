@@ -6,7 +6,7 @@ commands:
   install-deps:
     steps:
       - run:
-          command: sudo apt-get install libxml2-dev
+          command: sudo apt update && sudo apt-get install libxml2-dev
 
   build-php:
     steps:
