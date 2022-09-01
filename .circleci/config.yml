@@ -6,7 +6,7 @@ commands:
   install-deps:
     steps:
       - run:
-          command: sudo apt update && sudo apt-get install libxslt1-dev libpng-dev
+          command: sudo apt update && sudo apt-get install libxslt1-dev libpng-dev libfreetype-dev
 
   run-tests:
     steps:
