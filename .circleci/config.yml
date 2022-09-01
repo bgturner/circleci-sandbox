@@ -3,7 +3,7 @@ orbs:
   browser-tools: circleci/browser-tools@1.2
 
 commands:
-  build:
+  build-php-tests:
     steps:
       - checkout
       - run:
@@ -21,7 +21,7 @@ commands:
 executors:
   docker-executor:
     docker: # run the steps with Docker
-      - image: cimg/base
+      - image: cimg/php:8.1.9-browsers # ...with this image as the primary container; this is where all `steps` will run
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
@@ -30,7 +30,7 @@ jobs:
   test-php-with-docker:
     executor: docker-executor
     steps:
-      - build
+      - build-php-tests
       - run-tests
 
 workflows:
