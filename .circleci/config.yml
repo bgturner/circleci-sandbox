@@ -6,11 +6,17 @@ commands:
   build:
     steps:
       - checkout
-      - run: sudo composer self-update
-      - run: composer install
-  run-pest:
+      - run:
+          name: Update Composer
+          command: sudo composer self-update
+      - run:
+          name: Install Composer Dependencies
+          command: composer install
+  run-tests:
     steps:
-      - run: ./vendor/bin/pest
+      - run:
+          name: Run Tests
+          command: ./vendor/bin/pest
 
 executors:
   docker-executor:
@@ -25,7 +31,7 @@ jobs:
     executor: docker-executor
     steps:
       - build
-      - run-pest
+      - run-tests
 
 workflows:
   test-with-docker:
