@@ -18,7 +18,7 @@ commands:
     steps:
       - run:
           name: Install Composer
-          command: echo ./install-composer.sh </path/to/php/bin/php>
+          command: ./install-composer.sh ./builds/php-7.4.30/bin/php
 
   build-php-tests:
     steps:
