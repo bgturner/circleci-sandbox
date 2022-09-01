@@ -22,7 +22,6 @@ commands:
 
   build-php-tests:
     steps:
-      - checkout
       - run:
           name: Update Composer
           command: sudo composer self-update
@@ -45,6 +44,7 @@ jobs:
     executor: docker-executor
     steps:
       - install-deps
+      - checkout
       - build-php
       - install-composer
       - build-php-tests
