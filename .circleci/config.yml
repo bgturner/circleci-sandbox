@@ -18,6 +18,7 @@ jobs:
   test-php-with-docker:
     executor: docker-executor
     steps:
+      - checkout
       - run-tests
 
 workflows:
