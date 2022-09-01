@@ -21,7 +21,7 @@ commands:
 executors:
   docker-executor:
     docker: # run the steps with Docker
-      - image: cimg/php:8.1.9-browsers # ...with this image as the primary container; this is where all `steps` will run
+      - image: cimg/base
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
