@@ -3,33 +3,11 @@ orbs:
   browser-tools: circleci/browser-tools@1.2
 
 commands:
-  install-deps:
-    steps:
-      - run:
-          command: sudo apt update && sudo apt-get install libxml2-dev
-
-  build-php:
-    steps:
-      - run:
-          name: Compiling PHP 7.4
-          command: cd compile-php && ./compile-php.sh 7.4.30
-
-  install-composer:
-    steps:
-      - run:
-          name: Install Composer
-          command: ./install-composer.sh ./builds/php-7.4.30/bin/php
-
-  build-php-tests:
-    steps:
-      - run:
-          name: Install Composer Dependencies
-          command: ./builds/php-7.4.30/bin/php $HOME/bin/composer install
   run-tests:
     steps:
       - run:
           name: Run Tests
-          command: ./vendor/bin/pest
+          command: ./tests-php-lightning-services.sh
 
 executors:
   docker-executor:
@@ -40,11 +18,6 @@ jobs:
   test-php-with-docker:
     executor: docker-executor
     steps:
-      - install-deps
-      - checkout
-      - build-php
-      - install-composer
-      - build-php-tests
       - run-tests
 
 workflows:
