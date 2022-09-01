@@ -3,6 +3,11 @@ orbs:
   browser-tools: circleci/browser-tools@1.2
 
 commands:
+  install-deps:
+    steps:
+      - run:
+          command: sudo apt update && sudo apt-get install libxslt1-dev
+
   run-tests:
     steps:
       - run:
@@ -18,6 +23,7 @@ jobs:
   test-php-with-docker:
     executor: docker-executor
     steps:
+      - install-deps
       - checkout
       - run-tests
 
