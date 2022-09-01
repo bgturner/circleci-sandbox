@@ -59,7 +59,7 @@ echo "Changing to php build directory:"
 echo "     $(pwd)"
 
 ./configure \
-  --disable-all \
+  --with-openssl \
 	--enable-option-checking=fatal \
 	--prefix="$PHP_INSTALL_DIR" \
 
