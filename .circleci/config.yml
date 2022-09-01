@@ -8,8 +8,9 @@ commands:
       - checkout
       - run: sudo composer self-update
       - run: composer install
-  test:
-    - run: ./vendor/bin/pest
+  run-pest:
+    steps:
+      - run: ./vendor/bin/pest
 
 executors:
   docker-executor:
@@ -24,4 +25,4 @@ jobs:
     executor: docker-executor
     steps:
       - build
-      - test
+      - run-pest
