@@ -7,7 +7,7 @@ commands:
     steps:
       - run:
           name: Run Tests
-          command: ./tests-php-lightning-services.sh
+          command: ./test-php-lightning-services.sh
 
 executors:
   docker-executor:
