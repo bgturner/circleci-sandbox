@@ -23,11 +23,8 @@ commands:
   build-php-tests:
     steps:
       - run:
-          name: Update Composer
-          command: sudo composer self-update
-      - run:
           name: Install Composer Dependencies
-          command: composer install
+          command: ./builds/php-7.4.30/bin/php $HOME/bin/composer install
   run-tests:
     steps:
       - run:
