@@ -26,3 +26,8 @@ jobs:
     steps:
       - build
       - run-pest
+
+workflows:
+  test-with-docker:
+    jobs:
+      - test-php-with-docker
