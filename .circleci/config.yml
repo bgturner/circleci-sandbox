@@ -12,3 +12,5 @@ jobs: # a collection of steps
     steps:
       - checkout
       - run: sudo composer self-update
+      - run: composer install
+      - run: ./vendor/bin/pest
