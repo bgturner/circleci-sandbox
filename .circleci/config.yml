@@ -2,15 +2,26 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.2
 
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
+commands:
+  build:
+    steps:
+      - checkout
+      - run: sudo composer self-update
+      - run: composer install
+  test:
+    - run: ./vendor/bin/pest
+
+executors:
+  docker-executor:
     docker: # run the steps with Docker
       - image: cimg/php:8.1.9-browsers # ...with this image as the primary container; this is where all `steps` will run
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
+
+jobs:
+  test-php-with-docker:
+    executor: docker-executor
     steps:
-      - checkout
-      - run: sudo composer self-update
-      - run: composer install
-      - run: ./vendor/bin/pest
+      - build
+      - test
